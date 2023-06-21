@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+actor Student
+actor Teacher
+actor Admin
+rectangle System {
+  usecase "Student Login to Account" as UC1
+  usecase "Student Choose and Signup for Courses" as UC2
+  usecase "Student Pay for Courses" as UC3
+  usecase "Admin Define New Subject" as UC4
+  usecase "Admin Define New Term" as UC5
+  usecase "Admin Define New Course" as UC6
+  usecase "Admin Define New Teacher" as UC7
+  usecase "Student Request Graduation" as UC8
+  usecase "Student Order Lunch" as UC9
+  usecase "Teacher Create Public Profile" as UC10
+  Student -- UC1
+  Student -- UC2
+  Student -- UC3
+  Student -- UC8
+  Student -- UC9
+  Teacher -- UC10
+  Admin -- UC4
+  Admin -- UC5
+  Admin -- UC6
+  Admin -- UC7
+}
+@enduml

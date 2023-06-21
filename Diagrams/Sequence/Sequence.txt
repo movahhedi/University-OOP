@@ -1,0 +1,45 @@
+@startuml
+actor Student
+actor Admin
+actor Teacher
+actor Shaparak
+
+Student -> Account: Signup
+Account -> Student: GetDetails
+Student -> Account: ChangeName
+Student -> Account: ChangeEmail
+Student -> Account: ChangeMobile
+Student -> Account: ChangePassword
+Student -> Account: ChangeUsername
+Student -> Account: Login
+Account --> Student: AccountSession
+Student -> Takes: StudentSignup
+Takes -> Course: Create
+Takes -> Admin: RequestApproval
+Admin -> Takes: Approve
+Takes --> Student: Status = APPROVED
+Student -> CourseSession: Create
+Teacher -> CourseSession: MarkAttendance
+Student -> LunchOrder: Order
+Student -> StudentPayment: Pay
+Student -> Shaparak: RequestPayment
+Shaparak -> Student: PaymentLink
+Student -> Shaparak: EnterPaymentDetails
+Shaparak -> Student: PaymentResult
+
+Teacher -> Account: CreatePublicProfile
+Account -> Teacher: GetDetails
+Teacher -> Account: ChangeName
+Teacher -> Account: ChangeEmail
+Teacher -> Account: ChangeMobile
+Teacher -> Account: ChangePassword
+Teacher -> Account: ChangeUsername
+Teacher -> Account: Login
+Account --> Teacher: AccountSession
+Teacher -> Teacher: FillPublicProfileData
+
+Admin -> Subject: Create
+Admin -> Course: Create
+Admin -> Teacher: Create
+
+@enduml

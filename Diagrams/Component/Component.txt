@@ -1,0 +1,53 @@
+@startuml
+package "University System" {
+
+  [Web Server] as web
+
+  [Student Portal] as student
+  [Admin Portal] as admin
+  [Teacher Portal] as teacherPortal
+  [Database] as db
+
+  [Student Account] as studentAccount
+  [Course Enrollment] as enrollment
+  [Shaparak Payment Gateway] as payment
+  [Subject Management] as subject
+  [Term Management] as term
+  [Course Management] as course
+  [Teacher Management] as teacher
+  [Graduation Management] as graduation
+  [Lunch Service] as lunch
+  [Teacher Public Profile] as teacherProfile
+
+  web --> student
+  web --> admin
+  web --> teacherPortal
+  web --> db
+
+  student --> studentAccount
+  student --> enrollment
+  student --> payment
+  student --> lunch
+
+  admin --> subject
+  admin --> term
+  admin --> course
+  admin --> teacher
+  admin --> graduation
+
+  teacherPortal --> teacherProfile
+
+  studentAccount --> db
+  enrollment --> db
+  payment --> db
+  subject --> db
+  term --> db
+  course --> db
+  teacher --> db
+  graduation --> db
+  lunch --> db
+  teacherProfile --> db
+
+  payment --> web
+}
+@enduml

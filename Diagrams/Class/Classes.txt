@@ -1,0 +1,97 @@
+# Student (inherits Account)
+#------------------------
++ Graduate()
+
+
+# Teacher (inherits Account)
++ AreaOfExpertise
+
+
+# Account
++ FName: varchar(64)
++ LName: varchar(64)
++ Mobile: varchar(14)
++ NationalId: varchar(10)
++ Email: varchar(256)
++ Address: varchar(1024)
++ Gender: 1 | 2
++ Bio: varchar(1024)
++ PasswordHash: varchar(256)
+#------------------------
++ GetDetails()
++ Signup()
++ Login()
++ ChangeUsername()
++ ChangeEmail()
++ ChangeMobile()
++ ChangePassword()
++ ChangeEmail()
++ ChangeName()
+
+
+# Subject
++ Name
+#------------------------
++ Create()
+
+
+# SubjectPrerequirement
++ SubjectId
++ PreReqSubjectId
++ Reason
+#------------------------
++ Add()
++ Remove()
+
+
+# Term
++ Year
++ Semester
+#------------------------
++ Create()
++ Remove()
+
+
+# Course
++ SubjectId
++ TeacherId
++ TermId
+#------------------------
++ Create()
++ Remove()
+
+
+# CourseSession
++ CourseId
+#------------------------
++ Create()
++ CreateBulk()
++ Remove()
+
+
+# Takes
++ CourseId
++ StudentId
++ Status
+#------------------------
++ StudentSignup()
+
+
+# StudentPayment
++ StudentId
++ Amount
++ PaymentDetails
+#------------------------
++ Pay()
+
+
+# AccountSession
++ AccountId
++ LoginDT
++ ExpireDT
++ DeviceIP
++ SessionHash
+#------------------------
++ Login()
++ Logout()
+

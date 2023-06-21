@@ -1,0 +1,21 @@
+@startuml
+actor Student
+participant "CourseRegistrationSystem" as CRS
+participant "Shaparak" as SP
+Student -> CRS: Login to Account
+activate CRS
+CRS -> CRS: Choose and Signup for Courses
+CRS -> CRS: Pay for Courses
+activate SP
+CRS -> SP: Redirect to Shaparak
+SP -> CRS: Receive payment request
+CRS -> SP: Send payment details
+SP -> CRS: Receive payment response
+CRS -> CRS: Approve payment
+CRS --> Student: Success Page
+Student -> CRS: Request Graduation
+Student -> CRS: Order Lunch
+CRS -> CRS: Logout
+deactivate CRS
+deactivate SP
+@enduml

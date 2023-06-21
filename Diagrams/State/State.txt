@@ -1,0 +1,11 @@
+@startuml
+[*] --> InactiveAccount : Create account
+InactiveAccount --> ActiveAccount : Activate account
+ActiveAccount --> ChooseCourses : Choose courses
+ChooseCourses --> PayForCourses : Choose all courses
+PayForCourses --> PaymentSuccessful : Payment successful
+PaymentSuccessful --> ShowSuccessPage : Show success page
+PayForCourses --> PaymentFailed : Payment failed
+PaymentFailed --> PayForCourses : Redo payment
+ShowSuccessPage --> [*]
+@enduml

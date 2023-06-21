@@ -1,0 +1,115 @@
+@startuml
+package "CourseRegistrationSystem" {
+  class Account {
+    + FName: varchar(64)
+    + LName: varchar(64)
+    + Mobile: varchar(14)
+    + NationalId: varchar(10)
+    + Email: varchar(256)
+    + Address: varchar(1024)
+    + Gender: enum {MALE, FEMALE}
+    + Bio: varchar(1024)
+    + PasswordHash: varchar(256)
+    --
+    + GetDetails(): AccountDetails
+    + Signup(): bool
+    + Login(): AccountSession
+    + ChangeUsername(username: varchar(256)): bool
+    + ChangeEmail(email: varchar(256)): bool
+    + ChangeMobile(mobile: varchar(14)): bool
+    + ChangePassword(password: varchar(256)): bool
+    + ChangeName(firstName: varchar(64), lastName: varchar(64)): bool
+  }
+
+  class Student {
+    --
+    + Graduate(): bool
+    --
+    + RequestGraduation(): bool
+    + OrderLunch(date: date, meal: varchar(45)): bool
+  }
+
+  class Teacher {
+    + AreaOfExpertise: varchar(256)
+    --
+    + CreatePublicProfile(): bool
+  }
+
+  package "Course Management" {
+    class Subject {
+      + Name: varchar(256)
+      + IsMandatory: bool
+      --
+      + Create(): bool
+    }
+
+    class Term {
+      + Year: int
+      + Semester: varchar(45)
+      --
+      + Create(): bool
+      + Remove(): bool
+    }
+
+    class Course {
+      + SubjectId: int
+      + TeacherId: int
+      + TermId: int
+      --
+      + Create(): bool
+      + Remove(): bool
+    }
+
+    class CourseSession {
+      + CourseId: int
+      --
+      + Create(): bool
+      + CreateBulk(numSessions: int): bool
+      + Remove(): bool
+    }
+
+    class Takes {
+      + CourseId: int
+      + StudentId: int
+      + Status: enum {PENDING, APPROVED, REJECTED}
+      --
+      + StudentSignup(): bool
+    }
+  }
+
+  package "Payment Management" {
+    class StudentPayment {
+      + StudentId: int
+      + Amount: decimal
+      + PaymentDetails: varchar(1024)
+      --
+      + Pay(): bool
+    }
+  }
+
+  package "Session Management" {
+    class AccountSession {
+      + AccountId: int
+      + LoginDT: datetime
+      + ExpireDT: datetime
+      + DeviceIP: varchar(45)
+      + SessionHash: varchar(256)
+      --
+      + Login(): bool
+      + Logout(): bool
+    }
+  }
+
+  package "Lunch Service Management" {
+    class LunchOrder {
+      + StudentId: int
+      + OrderDate: date
+      + Meal: varchar(45)
+      + Price: decimal
+      --
+      + Order(): bool
+    }
+  }
+}
+
+@enduml

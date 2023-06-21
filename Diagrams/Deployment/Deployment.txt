@@ -1,0 +1,16 @@
+@startuml
+node "Ubuntu Server" {
+  node "NGINX Web Server" {
+    component "Web Application" as WA
+  }
+  node "MySQL Database" {
+    database "CourseRegistrationSystem DB" as DB
+  }
+}
+node "Shaparak Payment Gateway" {
+  component "Payment API" as API
+}
+DB --> WA
+WA --> API
+API --> Shaparak
+@enduml

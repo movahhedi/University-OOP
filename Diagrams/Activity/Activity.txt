@@ -1,0 +1,39 @@
+@startuml
+start
+if (Is account active?) then (yes)
+  - Choose courses
+  if (Are all courses chosen?) then (yes)
+    - Pay for courses
+    if (Is payment successful?) then (yes)
+      - Approve payment
+      - Show success page
+    else (no)
+      - Show failed page
+      - Redo payment
+    endif
+  else (no)
+    - Choose remaining courses
+  endif
+  else (no)
+  endif
+stop
+@enduml
+
+
+
+@startuml
+|Student|
+:Student Login to Account;
+:Student Choose and Signup for Courses;
+if (Payment Required?) then (yes)
+  :Student Pay for Courses;
+  :Student Request Payment to Shaparak;
+  |Shaparak|
+  :Shaparak Generate Payment Link;
+  :Student Enter Payment Details;
+  :Shaparak Verify Payment;
+else (no)
+  :Student Signup Complete;
+endif
+@enduml
+
